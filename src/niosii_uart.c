@@ -9,7 +9,7 @@
  ***********************************************************************/
 #include <stdio.h>
 #include <inttypes.h>
-#include "msoe_IO_adresses.h"
+#include "msoeIoAdresses.h"
 #include "niosii_uart.h"
 
 

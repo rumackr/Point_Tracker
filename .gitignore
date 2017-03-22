@@ -81,3 +81,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.cproject
+*.force_relink
+*.project
+.project
+*.d
+*.map
+*.objdump
+create-this-app

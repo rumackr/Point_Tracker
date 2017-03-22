@@ -142,10 +142,10 @@ ACDS_VERSION := 13.1
 ELF := Point_Tracker.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += src/msoe_IO_adresses.c
 C_SRCS += src/PointTracker.c
 C_SRCS += src/niosii_uart.c
-C_SRCS += src/NiosiiCmdParser.c
+C_SRCS += src/CameraCmdParser.c
+C_SRCS += src/msoeIoAdresses.c
 CXX_SRCS :=
 ASM_SRCS :=
 
