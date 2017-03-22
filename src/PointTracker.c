@@ -9,7 +9,7 @@
 /****   INCLUDES  ****/
 #include "PointTracker.h"
 #include "niosii_uart.h"
-#include "msoe_IO_adresses.h"
+#include "CameraCmdParser.h"
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
@@ -21,11 +21,7 @@ int main(void);
 
 int main(void) {
 	while(1){
-	    uart_init();
-		*LEDs = 0xAF;
+        cameraCmdSystem();
 	}
 	return 0;
 }
-
-
-
