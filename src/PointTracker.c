@@ -10,6 +10,9 @@
 #include "PointTracker.h"
 #include "niosii_uart.h"
 #include "CameraCmdParser.h"
+#include "niosii_pwm.h"
+#include "ServoAPI.h"
+
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
@@ -20,8 +23,9 @@ int main(void);
 
 
 int main(void) {
+	initServo();
 	while(1){
-        cameraCmdSystem();
+		cameraCmdSystem();
 	}
 	return 0;
 }

@@ -8,6 +8,7 @@
 
 /****   INCLUDES  ****/
 #include "CameraCmdParser.h"
+#include "ServoAPI.h"
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
@@ -16,6 +17,9 @@
 #define MIN_COUNT 1
 #define READ_CMD "RD"
 #define WRITE_CMD "WR"
+#define PAN_CMD "P"
+#define TILT_CMD "T"
+
 #define IS_A_MATCH 0
 #define FALSE 0
 #define VALID 1
@@ -118,8 +122,14 @@ uint8_t cameraCmdSystem(){
     	WriteCmd wrCmd = wrPaser(cmd);
         memWriter(wrCmd.addr,wrCmd.data);
 
-    } else {
-        printf("\n ERROR:\n    %s\n is an invalid command.", cmd);
+    } else if(strcmp(op,PAN_CMD) == IS_A_MATCH) {
+    	int col=0;
+    	sscanf(cmd,"%*s %d", &col);
+    	pan(col);
+    }else if(strcmp(op,TILT_CMD) == IS_A_MATCH) {
+    	int row=0;
+    	sscanf(cmd,"%*s %d", &row);
+    	tilt(row);
     }
     return isValid;
 }

@@ -146,6 +146,8 @@ C_SRCS += src/PointTracker.c
 C_SRCS += src/niosii_uart.c
 C_SRCS += src/CameraCmdParser.c
 C_SRCS += src/msoeIoAdresses.c
+C_SRCS += src/niosii_pwm.c
+C_SRCS += src/ServoAPI.c
 CXX_SRCS :=
 ASM_SRCS :=
 
