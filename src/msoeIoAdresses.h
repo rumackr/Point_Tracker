@@ -1,5 +1,5 @@
 /******************************************  ***********************************
- * FILENAME:     msoe_IO_adresses.h                                          *
+ * FILENAME:    msoeIoAdresses.h                                              *
  * DATE:         11 Dec 2015                                                 *
  * AUTHOR:       rumackr@msoe.edu <Reid Rumack>                              *
  * PROVIDES: - defines register base addresses for the CE2800 DE0            *
@@ -8,42 +8,54 @@
 
 #ifndef MSOEIOADRESSES_H_
 #define MSOEIOADRESSES_H_
+//
+extern volatile uint16_t*  LEDs;
+//extern volatile uint32_t*  HEX_7;
+//extern volatile uint32_t*  BUZZER;
+//extern volatile uint32_t*  SLDR;
+//extern volatile uint32_t*  PUSH_BTN;
+//extern volatile uint32_t*  J4_EXPAN;
+//
+//extern volatile uint32_t*  TIMER_0;
+//extern volatile uint32_t*  TIMER_0_STAT;
+//extern volatile uint32_t*  TIMER_0_CTRL;
+//extern volatile uint32_t*  TIMER_0_LOW;
+//extern volatile uint32_t*  TIMER_0_HIGH;
+//
+//extern volatile uint32_t*  TIMER_1;
+//extern volatile uint32_t*  TIMER_1_STAT;
+//extern volatile uint32_t*  TIMER_1_CTRL;
+//extern volatile uint32_t*  TIMER_1_LOW;
+//extern volatile uint32_t*  TIMER_1_HIGH;
+//
+//extern volatile uint32_t*  TIMER_2;
+//extern volatile uint32_t*  TIMER_2_STAT;
+//extern volatile uint32_t*  TIMER_2_CTRL;
+//extern volatile uint32_t*  TIMER_2_LOW;
+//extern volatile uint32_t*  TIMER_2_HIGH;
 
-extern volatile uint32_t*  LEDs;
-extern volatile uint32_t*  HEX_7;
-extern volatile uint32_t*  BUZZER;
-extern volatile uint32_t*  SLDR;
-extern volatile uint32_t*  PUSH_BTN;
-extern volatile uint32_t*  J4_EXPAN;
+extern volatile uint8_t* I2C_LO      ;
+extern volatile uint8_t* I2C_HI      ;
+extern volatile uint8_t* I2C_CTRL    ;
+extern volatile uint8_t* I2C_TRANSMIT;
+extern volatile uint8_t* I2C_RECEIVE ;
+extern volatile uint8_t* I2C_CMD     ;
+extern volatile uint8_t* I2C_STAT    ;
 
-extern volatile uint32_t*  TIMER_0;
-extern volatile uint32_t*  TIMER_0_STAT;
-extern volatile uint32_t*  TIMER_0_CTRL;
-extern volatile uint32_t*  TIMER_0_LOW;
-extern volatile uint32_t*  TIMER_0_HIGH;
+extern volatile uint8_t* CAM_CTRL   ;
 
-extern volatile uint32_t*  TIMER_1;
-extern volatile uint32_t*  TIMER_1_STAT;
-extern volatile uint32_t*  TIMER_1_CTRL;
-extern volatile uint32_t*  TIMER_1_LOW;
-extern volatile uint32_t*  TIMER_1_HIGH;
-
-extern volatile uint32_t*  TIMER_2;
-extern volatile uint32_t*  TIMER_2_STAT;
-extern volatile uint32_t*  TIMER_2_CTRL;
-extern volatile uint32_t*  TIMER_2_LOW;
-extern volatile uint32_t*  TIMER_2_HIGH;
+extern volatile uint8_t* PIXEL_PORT   ;
 
 extern volatile uint32_t*  LCD_DATA;
 extern volatile uint32_t*  LCD_DATA_DIR;
 extern volatile uint32_t*  LCD_CTRL;
 extern volatile uint32_t*  LCD_CTRL_DIR;
 
-extern volatile uint32_t*  PWM_OCRA1A;
-extern volatile uint32_t*  PWM_OCRA1B ;
-extern volatile uint32_t*  PWM_TCNT;
+extern volatile uint16_t*  PWM_OCRA1A;
+extern volatile uint16_t*  PWM_OCRA1B ;
+extern volatile uint16_t*  PWM_TCNT;
 
-extern volatile uint32_t*  BufferedOut;
+extern volatile uint8_t*  VGA;
 
 extern volatile uint32_t*  ADC_CH0_UPDATE;
 extern volatile uint32_t*  ADC_CH1_AUTO_UPDATE;

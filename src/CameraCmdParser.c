@@ -7,6 +7,7 @@
 *******************************************************************************/
 
 /****   INCLUDES  ****/
+#include "msoeIoAdresses.h"
 #include "CameraCmdParser.h"
 #include "ServoAPI.h"
 #include <stdint.h>
@@ -27,7 +28,8 @@
 
 
 
-
+typedef struct readcmd ReadCmd;
+typedef struct writecmd WriteCmd;
 
 
 struct readcmd{
@@ -39,8 +41,7 @@ struct writecmd{
     uint32_t *addr;
     uint8_t  data;
 };
-typedef struct readcmd ReadCmd;
-typedef struct writecmd WriteCmd;
+
 
 /**** PROTO-TYPES ****/
 void memWriter(uint32_t* address, uint8_t data);
@@ -92,7 +93,7 @@ void memPrinter(uint32_t* staringAddr, uint32_t numToRead, uint8_t* rdData){;
 		printf("\n0x%08X:",staringAddr+numbPrinted);
 
 		for(i = 0; i < numbInLine; i++){
-			printf(" %02X ",(rdData+numbPrinted+i));
+			printf(" %02X ",*(rdData+numbPrinted+i));
 		}
 		numbPrinted += i;
 		printf("\n");
@@ -104,7 +105,8 @@ uint8_t cameraCmdSystem(){
     uint8_t isValid = INVALID;
     char cmd[32];
     char* op;
-    char* cmdPrompt = "\n Please enter a command.\n RD address\n RD address count(max of 16)\n WR address data\n";
+    char* cmdPrompt = "\n Please enter a command.\n RD address\n"
+         " RD address count(max of 16)\n WR address data\n T row\n P column\n";
     printf(cmdPrompt);
     if(fgets(cmd, sizeof(cmd), stdin) != NULL){
         char* newLine = strchr(cmd,'\n');
@@ -125,20 +127,22 @@ uint8_t cameraCmdSystem(){
     } else if(strcmp(op,PAN_CMD) == IS_A_MATCH) {
     	int col=0;
     	sscanf(cmd,"%*s %d", &col);
-    	pan(col);
+    	pan(col,1500);
+    	*PWM_OCRA1A =col;
     }else if(strcmp(op,TILT_CMD) == IS_A_MATCH) {
     	int row=0;
     	sscanf(cmd,"%*s %d", &row);
-    	tilt(row);
+    	tilt(row,1500);
+    	PWM_OCRA1B=row;
     }
     return isValid;
 }
 
 ReadCmd rdPaser(char* command){
     ReadCmd toReturn;
-    uint32_t count = 0;
+    unsigned int count = 0;
     sscanf(command,"%*s %x %u", &toReturn.addr, &count);
-    (count == 0)?(toReturn.count = MIN_COUNT):(toReturn.count = count);
+    (count == 0)?( toReturn.count = MIN_COUNT):(toReturn.count = count);
     return toReturn;
 }
 
@@ -147,7 +151,3 @@ WriteCmd wrPaser(char* command){
     sscanf(command,"%*s %x %x", &toReturn.addr, &toReturn.data);
     return toReturn;
 }
-
-
-
-

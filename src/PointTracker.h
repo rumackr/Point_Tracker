@@ -8,8 +8,11 @@
 
 #ifndef POINTTRACKER_H_
 #define POINTTRACKER_H_
+#include <stdint.h>
 
 int main(void);
+struct Point findXmidPoint();
+struct Point calcDiff(struct Point objCenter);
 
 
 
